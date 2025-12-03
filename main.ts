@@ -11,6 +11,10 @@ radio.setTransmitPower(1); // we should make a setting to change the transmit po
 
 let id = 1 // when we upload this code to the microbit use a unique ID
 
+let letters: Array<string> = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+let letterQueue = 0;
+let mainLetter = letters[letterQueue];
+
 basic.showNumber(id); // shows your id at the begenning
 basic.pause(2000); // pauses for 2 secs
 basic.clearScreen(); // clears screen
@@ -22,13 +26,19 @@ basic.forever(function () {
 
 // end of base code made by me git-coder plus
 
-input.onButtonPressed(Button.A, function () {
-
+input.onButtonPressed(Button.A, function() {
+    letterQueue = letterQueue - 1;
+    if (letterQueue < 0) {
+        letterQueue = 0;
+    }
 })
-input.onButtonPressed(Button.B, function on_button_pressed_b() {
-    
+input.onButtonPressed(Button.B, function() {
+    letterQueue = letterQueue + 1;
+    if (letterQueue > 10) {
+        letterQueue = 10;
+    }
 })
-input.onPinPressed(TouchPin.P1, function on_pin_pressed_p1() {
+input.onPinPressed(TouchPin.P1, function() {
     
 })
 
